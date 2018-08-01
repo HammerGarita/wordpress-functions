@@ -49,7 +49,7 @@
     );
   	$args = array(
   		'label'                 => __( 'Custom Post Type', 'my_theme' ),
-  		'description'           => __( 'Datos de la Empresa', 'my_theme' ),
+  		'description'           => __( 'Datos del Custom Post Type', 'my_theme' ),
   		'labels'                => $labels,
   		'supports'              => array( 'title', 'editor', 'thumbnail'),
   		'hierarchical'          => true,
