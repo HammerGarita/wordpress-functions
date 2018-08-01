@@ -39,14 +39,14 @@
   		'items_list'            => __( 'Lista de Custom Post Types', 'my_theme' ),
   		'items_list_navigation' => __( 'Navegación de Custom Post Types', 'my_theme' ),
   		'filter_items_list'     => __( 'Filtrar Custom Post Types', 'my_theme' ),
-      'parent_item_colon' => '',
-  	);
-    $rewrite = array(
-      'slug'                       => 'custom-post-type', //url for the custom post type
-      'with_front'                 => false,
-      'pages'                      => true,
+	        'parent_item_colon'     => '',
+	);
+        $rewrite = array(
+          	'slug'                       => 'custom-post-type', //url for the custom post type
+          	'with_front'                 => false,
+          	'pages'                      => true,
   		'feeds'                      => true,
-    );
+        );
   	$args = array(
   		'label'                 => __( 'Custom Post Type', 'my_theme' ),
   		'description'           => __( 'Datos del Custom Post Type', 'my_theme' ),
@@ -57,7 +57,7 @@
   		'show_ui'               => true,
   		'show_in_menu'          => true,
   		'menu_position'         => 5,
-  		'menu_icon'             => 'dashicons-store',
+  		'menu_icon'             => 'dashicons-store', // Icons: https://developer.wordpress.org/resource/dashicons/
   		'show_in_admin_bar'     => true,
   		'show_in_nav_menus'     => true,
   		'can_export'            => true,
@@ -65,7 +65,7 @@
   		'exclude_from_search'   => false,
   		'publicly_queryable'    => true,
   		'capability_type'       => 'page',
-      'rewrite'               => $rewrite,
+      		'rewrite'               => $rewrite,
   	);
   	register_post_type( 'custom_post_type', $args );
   }
