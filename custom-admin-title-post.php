@@ -1,13 +1,13 @@
 <?php
 /**
  * Author: Hammer Garita | @hammergarita
- * 
+ * Change the Admin Title Post
  */
 /*------------------------------------*\
 	Custom Admin Title Post
 \*------------------------------------*/
 
-//Change the Title Admin Post
+//Change the placeholder 'Enter title here' in post editor
 function change_title_post( $title ){
      $screen = get_current_screen();
      if  ( 'custom_post_type' == $screen->post_type ) {
