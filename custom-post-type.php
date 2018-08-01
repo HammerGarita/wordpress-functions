@@ -2,7 +2,7 @@
 
 /**
  * Author: Hammer Garita | @hammergarita
- * Custom functions, support, custom post types and more.
+ * Create a Custom Post Type
  */
 /*------------------------------------*\
 	Template Custom Post Type
