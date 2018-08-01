@@ -42,7 +42,7 @@
       'parent_item_colon' => '',
   	);
     $rewrite = array(
-      'slug'                       => 'custom-post-type',
+      'slug'                       => 'custom-post-type', //url for the custom post type
       'with_front'                 => false,
       'pages'                      => true,
   		'feeds'                      => true,
