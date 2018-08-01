@@ -2,7 +2,7 @@
 <?php
 /**
  * Author: Hammer Garita | @hammergarita
- * Create Custom Excerpts
+ * Create Custom Gravatar
  */
 /*------------------------------------*\
 	Custom Gravatar
