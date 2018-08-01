@@ -33,8 +33,8 @@
   		'items_list_navigation'      => __( 'Navegación de Custom Taxonomys', 'Taxonomy' ),
   	);
   	$rewrite = array(
-  		'slug'                       => 'custom-taxonomy',
-  		'with_front'                 => true,
+  		'slug'                       => 'custom-taxonomy', //url for the taxonomy
+  		'with_front'                 => true, //example: /custom-taxonomy/new-url/
   		'hierarchical'               => false,
   	);
   	$args = array(
@@ -49,4 +49,4 @@
   	);
   	register_taxonomy( 'custom_taxonomy', array( 'custom_post_type' ), $args );
   }
-add_action( 'init', 'custom_taxonomy', 0 );
+  add_action( 'init', 'custom_taxonomy', 0 );
