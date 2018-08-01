@@ -174,7 +174,6 @@ function my_theme_pagination()
     ));
 } add_action('init', 'my_theme_pagination'); // Add our HTML5 Pagination
 
-
 // Remove 'text/css' from our enqueued stylesheet
 function my_theme_style_remove($tag)
 {
@@ -190,53 +189,12 @@ function remove_thumbnail_dimensions( $html )
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 
-/*------------------------------------*\
-	Special Functions
-\*------------------------------------*/
-
-// Custom Excerpts
-function excerpt_lenght($length) // Create 20 Word Callback for Excerpts, call using my_theme_custom_excerpt('excerpt_lenght');
-{
-    return 20;
-}
-
-// Create the Custom Excerpts callback
-function my_theme_custom_excerpt($length_callback = '', $more_callback = '')
-{
-    global $post;
-    if (function_exists($length_callback)) {
-        add_filter('excerpt_length', $length_callback);
-    }
-    if (function_exists($more_callback)) {
-        add_filter('excerpt_more', $more_callback);
-    }
-    $output = get_the_excerpt();
-    $output = apply_filters('wptexturize', $output);
-    $output = apply_filters('convert_chars', $output);
-    $output = '<p>' . $output . '</p>';
-    echo $output;
-}
-
-// Custom View Article link to Post
-function my_theme_view_article($more)
-{
-    global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'my_theme') . '</a>';
-} add_filter('excerpt_more', 'my_theme_view_article'); // Add 'View Article' button instead of [...] for Excerpts
-
 // Remove Admin bar
 function remove_admin_bar()
 {
     return false;
 } add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 
-// Custom Gravatar in Settings > Discussion
-function html5blankgravatar ($avatar_defaults)
-{
-    $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
-    $avatar_defaults[$myavatar] = "Custom Gravatar";
-    return $avatar_defaults;
-} add_filter('avatar_defaults', 'html5blankgravatar'); // Custom Gravatar in Settings > Discussion
 
 /*------------------------------------*\
 	Remove unnecessary actions and filters
