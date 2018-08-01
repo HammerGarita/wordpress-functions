@@ -2,7 +2,7 @@
 
 /**
  * Author: Hammer Garita | @hammergarita
- * Create Custom Excerpts
+ * Create a custom view article link to post
  */
  
 /*------------------------------------*\
