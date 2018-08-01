@@ -42,10 +42,10 @@
 	        'parent_item_colon'     => '',
 	);
         $rewrite = array(
-          	'slug'                       => 'custom-post-type', //url for the custom post type
-          	'with_front'                 => false,
-          	'pages'                      => true,
-  		'feeds'                      => true,
+          	'slug'                  => 'custom-post-type', //url for the custom post type
+          	'with_front'            => false,
+          	'pages'                 => true,
+  		'feeds'                 => true,
         );
   	$args = array(
   		'label'                 => __( 'Custom Post Type', 'my_theme' ),
