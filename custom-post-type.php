@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Author: Hammer Garita | @hammergarita
+ * Custom functions, support, custom post types and more.
+ */
+/*------------------------------------*\
+	Template Custom Post Type
+\*------------------------------------*/
+
 // Register Custom Post Typw
   function custom_post_type() {
 
