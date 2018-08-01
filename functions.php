@@ -49,7 +49,7 @@ if (function_exists('add_theme_support'))
 	Functions
 \*------------------------------------*/
 
-// Theme navigation
+// Theme navigation, call using my_theme_nav();
 function my_theme_nav() {
     wp_nav_menu(
     array(
@@ -125,4 +125,107 @@ function remove_category_rel_from_category_list($thelist)
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 } add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove invalid rel attribute
 
+// If Dynamic Sidebar Exists
+if (function_exists('register_sidebar'))
+{
+    // Define Sidebar Widget Area 1
+    register_sidebar(array(
+        'name' => __('Widget Area 1', 'my_theme'),
+        'description' => __('Description for this widget-area...', 'my_theme'),
+        'id' => 'widget-area-1',
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
+    ));
 
+    // Define Sidebar Widget Area 2
+    register_sidebar(array(
+        'name' => __('Widget Area 2', 'my_theme'),
+        'description' => __('Description for this widget-area...', 'my_theme'),
+        'id' => 'widget-area-2',
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
+    ));
+}
+
+// Remove wp_head() injected Recent Comment styles
+function my_remove_recent_comments_style()
+{
+    global $wp_widget_factory;
+    remove_action('wp_head', array(
+        $wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
+        'recent_comments_style'
+    ));
+} add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
+
+// Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
+function my_theme_pagination()
+{
+    global $wp_query;
+    $big = 999999999;
+    echo paginate_links(array(
+        'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+        'format' => '?paged=%#%',
+        'current' => max(1, get_query_var('paged')),
+        'total' => $wp_query->max_num_pages
+    ));
+} add_action('init', 'my_theme_pagination'); // Add our HTML5 Pagination
+
+
+// Remove 'text/css' from our enqueued stylesheet
+function my_theme_style_remove($tag)
+{
+    return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
+} add_filter('style_loader_tag', 'my_theme_style_remove'); // Remove 'text/css' from enqueued stylesheet
+
+// Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
+function remove_thumbnail_dimensions( $html )
+{
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
+    return $html;
+} 
+add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
+add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+
+/*------------------------------------*\
+	Special Functions
+\*------------------------------------*/
+
+// Custom Excerpts
+function excerpt_lenght($length) // Create 20 Word Callback for Index page Excerpts, call using my_theme_custom_excerpt('excerpt_lenght');
+{
+    return 20;
+}
+
+// Create the Custom Excerpts callback
+function my_theme_custom_excerpt($length_callback = '', $more_callback = '')
+{
+    global $post;
+    if (function_exists($length_callback)) {
+        add_filter('excerpt_length', $length_callback);
+    }
+    if (function_exists($more_callback)) {
+        add_filter('excerpt_more', $more_callback);
+    }
+    $output = get_the_excerpt();
+    $output = apply_filters('wptexturize', $output);
+    $output = apply_filters('convert_chars', $output);
+    $output = '<p>' . $output . '</p>';
+    echo $output;
+}
+
+// Custom View Article link to Post
+function my_theme_view_article($more)
+{
+    global $post;
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'my_theme') . '</a>';
+} add_filter('excerpt_more', 'my_theme_view_article'); // Add 'View Article' button instead of [...] for Excerpts
+
+// Remove Admin bar
+function remove_admin_bar()
+{
+    return false;
+} add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
