@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: Hammer Garita | @hammergarita
- * Remove trash option from Admin
+ * @link https://developer.wordpress.org/reference/hooks/page_row_actions-6/
  */
 /*------------------------------------*\
 	Remove Trash Option
