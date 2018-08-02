@@ -35,7 +35,7 @@ if(!function_exists('video_content_filter')) {
 function video_responsive_css() {
     ?>
         <style>
-        div.vid {
+        div.flex-video {
           position: relative;
           padding-bottom: 56.25%;
           padding-top: 30px;
@@ -45,7 +45,7 @@ function video_responsive_css() {
           clear: both;
         }
 
-        div.vid iframe {
+        div.flex-video iframe {
           position: absolute;
           top: 0;
           left: 0;
