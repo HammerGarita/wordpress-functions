@@ -24,3 +24,13 @@ function get_the_category($category_name){
 
 // Call using get_the_category('taxonomie_name');
 // Replace taxonomie_name with the name of your taxonomy
+
+
+/*------------------------------------*\
+	Example of use
+\*------------------------------------*/
+
+$custom_category = get_the_category('custom_category'); //Call the function
+if(!empty($custom_category)):
+	echo '<p>'. $custom_category .'</p>';
+endif;
