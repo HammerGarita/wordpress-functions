@@ -4,7 +4,7 @@
  * @link https://codex.wordpress.org/Function_Reference/add_role
  */
 /*------------------------------------*\
-	Add new user rol
+	Add new user role
 \*------------------------------------*/
 
 $result = add_role(
