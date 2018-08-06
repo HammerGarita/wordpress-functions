@@ -1,0 +1,11 @@
+<?php
+/**
+ * Author: Hammer Garita | @hammergarita
+ * @link https://codex.wordpress.org/Function_Reference/get_post_field
+ */
+/*------------------------------------*\
+	Get Post Field Function
+\*------------------------------------*/
+
+//Example: Get number of comments
+This post has <?php echo get_post_field( 'comment_count', 4124 ) ?> comments.
