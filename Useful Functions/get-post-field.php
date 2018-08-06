@@ -9,3 +9,5 @@
 
 //Example: Get number of comments
 This post has <?php echo get_post_field( 'comment_count', 4124 ) ?> comments.
+
+/* @link https://codex.wordpress.org/Database_Description#Table:_wp_posts */
